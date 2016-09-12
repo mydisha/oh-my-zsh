@@ -1,20 +1,31 @@
-# Laravel5 basic command completion
-_laravel5_get_command_list () {
+#Laravel 5.3 Basic Command
+_laravel53_get_command_list () {
 	php artisan --no-ansi | sed "1,/Available commands/d" | awk '/^ +[a-z]+/ { print $1 }'
 }
 
-_laravel5 () {
+_laravel53 () {
   if [ -f artisan ]; then
-    compadd `_laravel5_get_command_list`
+    compadd `_laravel53_get_command_list`
   fi
 }
 
-compdef _laravel5 artisan
-compdef _laravel5 la5
+compdef _laravel53 artisan
+compdef _laravel53 lv
 
 #Alias
-alias la5='php artisan'
+alias lv='php artisan'
 
-alias la5cache='php artisan cache:clear'
-alias la5routes='php artisan route:list'
-alias la5vendor='php artisan vendor:publish'
+alias lv5c='php artisan cache:clear'
+alias lv5l='php artisan route:list'
+alias lv5v='php artisan vendor:publish'
+
+alias lv5m='php artisan migrate'
+alias lv5mr='php artisan migrate:rollback'
+alias lv5entrust='php artisan entrust:migration'
+
+alias lv5kg='php artisan key:generate'
+alias lv5cc='php artisan config:clear'
+alias lv5auth='php artisan make:auth'
+
+alias lv5run='php artisan serve'
+
